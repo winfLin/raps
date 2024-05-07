@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Frame</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    .photo-frame {
+        position: relative;
+        max-width: 80%; /* 調整圖片最大寬度 */
+    }
+    .photo-frame img {
+        display: block;
+        max-width: 100%;
+        /* height: auto; 自動調整圖片高度 */
+    }
+    .photo-frame .frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+</style>
+</head>
+<body>
+<div class="photo-frame">
+    <img id="picture" src="10.jpg" alt="Picture" />	
+    <img id="frame" src="m6.png"  class="frame" alt="Frame" />	
+</div>
+
+<script>
+window.onload = function() {
+
+    var picture = document.getElementById('picture');
+	var frame = document.getElementById('frame');
+    var windowHeight = window.innerHeight ;
+    var pictureHeight = picture.offsetHeight;    
+
+    if (pictureHeight > windowHeight) {
+        var scaleFactor = windowHeight / pictureHeight;
+		//alert(windowHeight);
+		//alert(pictureHeight);
+		//alert(scaleFactor);
+		//alert(picture.offsetWidth);
+		//alert(picture.offsetHeight);
+		//alert(picture.offsetWidth * scaleFactor);
+		//alert(picture.offsetHeight * scaleFactor);
+		var w=Math.floor( picture.offsetWidth * scaleFactor ) + 'px';
+		var h=Math.floor(picture.offsetHeight * scaleFactor ) + 'px';
+		
+		picture.style.width = Math.floor(picture.offsetWidth * scaleFactor ) + 'px';		
+		
+        //picture.style.height = Math.floor(picture.offsetHeight * scaleFactor) + 'px';
+		
+		//alert(picture.style.width);
+		//alert(picture.style.height);		
+    }
+	
+	if(w != '')
+		frame.style.width=w;
+	if(h !='')
+		frame.style.height=h;
+	
+
+
+	
+};
+
+
+
+</script>
+
+</body>
+</html>
